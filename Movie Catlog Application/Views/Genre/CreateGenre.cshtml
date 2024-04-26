@@ -1,0 +1,35 @@
+﻿@using Movie_Catlog_Application.Models;
+@model Genre;
+
+@{
+    ViewData["Title"] = "CreateGenre";
+}
+
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-3 card p-3">
+        <h2 class="text-center text-success">Create Genre</h2>
+        <form asp-action="CreateGenre" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-1">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+           
+
+            <div class="row">
+                <div class="col-4">
+                    <input type="submit" value="Create" class="btn btn-primary btn-sm float-end" />
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
