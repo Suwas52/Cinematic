@@ -6,28 +6,138 @@
 
 :root {
     --bg-color: rgb(255, 255, 255);
+    --text-color: #999;
     --font-mukta: "Mukta", sans-serif;
 }
+a{
+    text-decoration:none;
+    cursor: pointer;
+
+}
+    a:hover {
+        text-decoration: none;
+    }
 
 body {
     width: 100%;
     min-height: 100vh;
-    background-color: var(--bg-color);
-    /* padding:0 3rem; */
+ 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-image: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url(../assits/header-img.jpg);
 }
 
-.nav-bar {
-    font-family: "Poppins", sans-serif;
-    display: flex;
-    /* background-color: var(--nav-bg-color); */
-    padding: 1.1rem 0.5px;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 3px solid rgb(84, 84, 84);
+.login-form {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    outline: none !important;
+}
+
+   
+
+.input-form {
+    background-color: rgb(25, 25, 25) !important;
+    border-color: white !important;
+    height: 3rem;
+    color: white !important;
+    font-size: 16px;
+}
+
+
+
+
+/* New CSS for logo */
+.red {
+    color: red;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 35px; /* Adjust size as needed */
+    font-weight: bold;
+    letter-spacing: 1px; /* Adjust spacing as needed */
+    text-transform: uppercase;
+    margin-right: 5px; /* Add spacing between letters */
+}
+.search-input {
+    width: 50%;
+}
+
+    .search-input #floatingInput {
+        color: #fff;
+    }
+
+    .search-input .form-control:focus {
+        border-color: #fff;
+        box-shadow: none;
+        border-width: medium;
+    }
+
+    .search-input .form-floating > .form-control:focus ~ label {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+        .search-input .form-floating > .form-control:focus ~ label::after {
+            background-color: transparent;
+        }
+
+    .search-input .form-floating {
+        width: 50%;
+    }
+
+    .search-input #floatingInput {
+        background: transparent;
+    }
+
+    .search-input label {
+        color: rgba(255, 255, 255, 0.7);
+        margin-left: 10px;
+    }
+
+.get-started-btn {
+    height: 60px;
+    font-size: 1.5rem;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+    .get-started-btn::after {
+        content: "\276F";
+        margin-left: 5px;
+    }
+
+/* navbar */
+
+nav img {
+    width: 13%;
+}
+
+.red-btn {
+    background: rgb(229, 9, 20);
+    color: #fff;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 5px 17px;
+}
+
+    .red-btn:hover {
+        background: rgb(193, 17, 25);
+    }
+
+/* hero section */
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.hero-first-p {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.hero-second-p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.875rem;
 }
 
 .logo {
@@ -57,6 +167,33 @@ body {
     .nav-link li a:hover {
         color: rgb(90, 90, 90);
     }
+
+.dropdown-btn {
+    background-color: #282828;
+    color: #a2a2a2;
+    width: 80%;
+}
+
+    .dropdown-btn:focus, .dropdown-btn:hover {
+        outline: none;
+        box-shadow: none !important;
+        color: #a2a2a2;
+    }
+
+.dropdown-menu {
+    background-color: #999 ;
+    color: white !important;
+}
+
+
+    
+
+
+
+.dropdown-col {
+    color: var(--text-color) !important;
+    font-weight: 600;
+}
 
 .dropdown-nav-link {
     position: absolute;
@@ -277,6 +414,15 @@ footer {
         padding: 0 !important;
     }
 }
+
+.transparent-input {
+    background-color: transparent !important;
+    border-color: white !important; /* Change border color to white when input is focused */
+}
+
+    .transparent-input:focus {
+        border-color: white !important; /* Keep border color white even after focusing */
+    }
 
 @media (max-width: 480px) {
     .movie-card {

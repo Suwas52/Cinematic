@@ -1,15 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Movie_Catlog_Application.DTOs.User;
 using Movie_Catlog_Application.Interfaces.Abstract;
+using Movie_Catlog_Application.Models;
 
 namespace Movie_Catlog_Application.Controllers
 {
     public class UserAuthenticationController : Controller
     {
+
+        private readonly UserManager<ApplicationUser> userManger;
         private readonly IUserAuthenticationService service;
-        public UserAuthenticationController(IUserAuthenticationService service)
+        public UserAuthenticationController(IUserAuthenticationService service, UserManager<ApplicationUser> userManger)
         {
-            this.service = service; 
+            this.service = service;
+            this.userManger = userManger;
         }
         public IActionResult Index()
         {
@@ -17,6 +22,11 @@ namespace Movie_Catlog_Application.Controllers
         }
 
         public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult LoginUser()
         {
             return View();
         }
@@ -37,7 +47,8 @@ namespace Movie_Catlog_Application.Controllers
 
             if (result.StatusCode == 1)
             {
-                return RedirectToAction("Display", "Dashboard");
+                
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -67,7 +78,7 @@ namespace Movie_Catlog_Application.Controllers
             {
                 
                 TempData["msg"] = result.Message;
-                return RedirectToAction("Home");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -76,7 +87,7 @@ namespace Movie_Catlog_Application.Controllers
             }
         }
 
-        public async Task<IActionResult> Reg()
+        /*public async Task<IActionResult> Reg()
         {
             var model = new Register
             {
@@ -88,7 +99,7 @@ namespace Movie_Catlog_Application.Controllers
             model.Role = "admin";
             var result = await service.RegisterAsync(model);
             return Ok(result);
-        }
+        }*/
 
 
 

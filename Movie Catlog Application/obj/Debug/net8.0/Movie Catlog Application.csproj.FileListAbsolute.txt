@@ -140,3 +140,4 @@ D:\.net and react project\test\Movie Catlog Application\Movie Catlog Application
 D:\.net and react project\test\Movie Catlog Application\Movie Catlog Application\obj\Debug\net8.0\Movie Catlog Application.pdb
 D:\.net and react project\test\Movie Catlog Application\Movie Catlog Application\obj\Debug\net8.0\Movie Catlog Application.genruntimeconfig.cache
 D:\.net and react project\test\Movie Catlog Application\Movie Catlog Application\obj\Debug\net8.0\ref\Movie Catlog Application.dll
+D:\.net and react project\test\Movie Catlog Application\Movie Catlog Application\obj\Debug\net8.0\Movie Catlog Application.sourcelink.json

@@ -22,21 +22,6 @@ namespace Movie_Catlog_Application.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("GenreMovie", b =>
-                {
-                    b.Property<int>("GenresGenreId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MoviesMovieId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GenresGenreId", "MoviesMovieId");
-
-                    b.HasIndex("MoviesMovieId");
-
-                    b.ToTable("GenreMovie");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -256,7 +241,7 @@ namespace Movie_Catlog_Application.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("Movie_Catlog_Application.Models.Movie", b =>
@@ -280,10 +265,10 @@ namespace Movie_Catlog_Application.Migrations
                     b.Property<string>("MovieImage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly?>("ReleaseDate")
+                        .HasColumnType("date");
 
-                    b.Property<int>("Runtime")
+                    b.Property<int?>("Runtime")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -292,7 +277,30 @@ namespace Movie_Catlog_Application.Migrations
 
                     b.HasKey("MovieId");
 
-                    b.ToTable("Movie");
+                    b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("Movie_Catlog_Application.Models.MovieGenre", b =>
+                {
+                    b.Property<int>("MovieGenreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MovieGenreId"));
+
+                    b.Property<int?>("GenreId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MovieGenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieGenre");
                 });
 
             modelBuilder.Entity("Movie_Catlog_Application.Models.Rating", b =>
@@ -353,21 +361,6 @@ namespace Movie_Catlog_Application.Migrations
                     b.ToTable("Review");
                 });
 
-            modelBuilder.Entity("GenreMovie", b =>
-                {
-                    b.HasOne("Movie_Catlog_Application.Models.Genre", null)
-                        .WithMany()
-                        .HasForeignKey("GenresGenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Movie_Catlog_Application.Models.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MoviesMovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -419,6 +412,23 @@ namespace Movie_Catlog_Application.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Movie_Catlog_Application.Models.MovieGenre", b =>
+                {
+                    b.HasOne("Movie_Catlog_Application.Models.Genre", "Genre")
+                        .WithMany("MovieGenres")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Movie_Catlog_Application.Models.Movie", "Movie")
+                        .WithMany("MovieGenres")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Genre");
+
+                    b.Navigation("Movie");
+                });
+
             modelBuilder.Entity("Movie_Catlog_Application.Models.Rating", b =>
                 {
                     b.HasOne("Movie_Catlog_Application.Models.Movie", "Movie")
@@ -464,8 +474,15 @@ namespace Movie_Catlog_Application.Migrations
                     b.Navigation("Reviews");
                 });
 
+            modelBuilder.Entity("Movie_Catlog_Application.Models.Genre", b =>
+                {
+                    b.Navigation("MovieGenres");
+                });
+
             modelBuilder.Entity("Movie_Catlog_Application.Models.Movie", b =>
                 {
+                    b.Navigation("MovieGenres");
+
                     b.Navigation("Ratings");
 
                     b.Navigation("Reviews");

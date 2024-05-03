@@ -53,7 +53,7 @@ namespace Movie_Catlog_Application.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genre",
+                name: "Genres",
                 columns: table => new
                 {
                     GenreId = table.Column<int>(type: "int", nullable: false)
@@ -62,23 +62,26 @@ namespace Movie_Catlog_Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genre", x => x.GenreId);
+                    table.PrimaryKey("PK_Genres", x => x.GenreId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movie",
+                name: "Movies",
                 columns: table => new
                 {
                     MovieId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Runtime = table.Column<int>(type: "int", nullable: false)
+                    ReleaseDate = table.Column<DateOnly>(type: "date", nullable: true),
+                    Runtime = table.Column<int>(type: "int", nullable: true),
+                    MovieImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cast = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Director = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movie", x => x.MovieId);
+                    table.PrimaryKey("PK_Movies", x => x.MovieId);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,27 +191,29 @@ namespace Movie_Catlog_Application.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GenreMovie",
+                name: "MovieGenre",
                 columns: table => new
                 {
-                    GenresGenreId = table.Column<int>(type: "int", nullable: false),
-                    MoviesMovieId = table.Column<int>(type: "int", nullable: false)
+                    MovieGenreId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MovieId = table.Column<int>(type: "int", nullable: true),
+                    GenreId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GenreMovie", x => new { x.GenresGenreId, x.MoviesMovieId });
+                    table.PrimaryKey("PK_MovieGenre", x => x.MovieGenreId);
                     table.ForeignKey(
-                        name: "FK_GenreMovie_Genre_GenresGenreId",
-                        column: x => x.GenresGenreId,
-                        principalTable: "Genre",
+                        name: "FK_MovieGenre_Genres_GenreId",
+                        column: x => x.GenreId,
+                        principalTable: "Genres",
                         principalColumn: "GenreId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "FK_GenreMovie_Movie_MoviesMovieId",
-                        column: x => x.MoviesMovieId,
-                        principalTable: "Movie",
+                        name: "FK_MovieGenre_Movies_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movies",
                         principalColumn: "MovieId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -231,9 +236,9 @@ namespace Movie_Catlog_Application.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Rating_Movie_MovieId",
+                        name: "FK_Rating_Movies_MovieId",
                         column: x => x.MovieId,
-                        principalTable: "Movie",
+                        principalTable: "Movies",
                         principalColumn: "MovieId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -259,9 +264,9 @@ namespace Movie_Catlog_Application.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Review_Movie_MovieId",
+                        name: "FK_Review_Movies_MovieId",
                         column: x => x.MovieId,
-                        principalTable: "Movie",
+                        principalTable: "Movies",
                         principalColumn: "MovieId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -306,9 +311,14 @@ namespace Movie_Catlog_Application.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GenreMovie_MoviesMovieId",
-                table: "GenreMovie",
-                column: "MoviesMovieId");
+                name: "IX_MovieGenre_GenreId",
+                table: "MovieGenre",
+                column: "GenreId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovieGenre_MovieId",
+                table: "MovieGenre",
+                column: "MovieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rating_MovieId",
@@ -350,7 +360,7 @@ namespace Movie_Catlog_Application.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "GenreMovie");
+                name: "MovieGenre");
 
             migrationBuilder.DropTable(
                 name: "Rating");
@@ -362,13 +372,13 @@ namespace Movie_Catlog_Application.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Genre");
+                name: "Genres");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Movie");
+                name: "Movies");
         }
     }
 }

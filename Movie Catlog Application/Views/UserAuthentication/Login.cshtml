@@ -5,7 +5,7 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="row d-flex align-items-center justify-content-center">
+<@* div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-3 card p-3">
         <h2 class="text-center text-info">Login</h2>
         <form asp-action="Login" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
@@ -38,6 +38,95 @@
         }
     </div>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+
+ <div class="mask d-flex align-items-center h-100">
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-md-8">
+
+                    <form asp-action="Login" class="login-form  rounded shadow-5-strong p-5" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+                        <h2 class="mb-4">Sign In</h2>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                        <div class="form-outline mb-4" data-mdb-input-init>
+                            <input asp-for="Username" type="Username" id="Username" class="form-control input-form" placeholder="Username or Email" />
+
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-outline mb-4" data-mdb-input-init>
+                            <div class="input-group">
+                                <input asp-for="Password" type="password" id="password" class="form-control input-form " placeholder="Password" />
+
+                                <button type="button" class="btn btn-secondary" id="togglePassword">
+                                    <i class="fas fa-eye-slash"></i>
+                                </button>
+                            </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="row mb-4">
+                            <div class="col d-flex justify-content-center">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" style="background-color:rgb(25, 25, 25); border-color:white;" type="checkbox" value="" id="form1Example3" checked />
+                                    <label class="form-check-label" for="form1Example3">
+                                        Remember me
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col text-center">
+
+                                <a href="#!" class="text-white text-decoration-none">Forgot password?</a>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn form-control" style="background-color:red; color:white; height:50px;" data-mdb-ripple-init>Sign In</button>
+                    
+                        <div class="row">
+
+                            <a asp-action="Register" class="text-decoration-none float-start mt-2" asp-route-returnurl="@ViewData["ReturnUrl"]">Don't have account?</a>
+                        </div>
+
+
+                        @if (TempData["msg"] != null)
+                         {    
+                            <span class="text-danger">
+                                @TempData["msg"]
+                            </span>           
+                         }
+                    </form>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+// JavaScript to toggle password visibility
+document.getElementById('togglePassword').addEventListener('click', function () {
+    var passwordInput = document.getElementById('password');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        this.innerHTML = '<i class="fas fa-eye"></i>';
+    } else {
+        passwordInput.type = 'password';
+        this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    }
+});
+</script>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

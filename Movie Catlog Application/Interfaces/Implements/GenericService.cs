@@ -14,12 +14,13 @@ namespace Movie_Catlog_Application.Interfaces.Implements
         public async Task CreateAsync<T>(T entity) where T : class
         {
             context.Set<T>().Add(entity);
-            _ = await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync<T>(T entity) where T : class
+        public async Task DeleteAsync<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            context.Set<T>().Remove(entity);
+            await context.SaveChangesAsync();
         }
 
         public async Task<List<T>> GetAllAsync<T>() where T : class
@@ -27,9 +28,15 @@ namespace Movie_Catlog_Application.Interfaces.Implements
             return await context.Set<T>().ToListAsync();
         }
 
-        public Task UpdateAsync<T>(T entity) where T : class
+        public async Task<T> GetByIdAsync<T>(int id) where T : class
         {
-            throw new NotImplementedException();
+            return await context.Set<T>().FindAsync(id);
+        }
+
+        public async Task UpdateAsync<T>(T entity) where T : class
+        {
+            context.Entry(entity).State = EntityState.Modified;
+            await context.SaveChangesAsync();
         }
     }
 }

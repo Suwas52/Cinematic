@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> signInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,50 +9,65 @@
     <title>@ViewData["Title"] - Movie_Catlog_Application</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-tuBkN+Z1c3nIGYMeuymayGzGBpLVZfMvJ9P6L1YO3eAaZ9jd+18DgWxwqy9Kb8qRMH8dtqJ3QUGYAwBUXZWi4g==" crossorigin="anonymous" />
+
+
+
+
     <link rel="stylesheet" href="~/Movie_Catlog_Application.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Movie</a>
+    <header class="position-relative">
+        <nav class="navbar navbar-expand">
+            <div class="container">
+
                 
-                <div class=" navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="d-flex navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                <a class="red" asp-controller="Home" asp-action="Index">Cinematic</a>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+
                         @if (User.IsInRole("admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="/Admin/Display">Admin Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="/Genre/CreateGenre">Create Genre</a>
-                            </li>
+                            <a type="button" class="red-btn fw-semibold text-decoration-none " asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Dashboard/Display">Dashboard</a>
-                        </li>
-                        
-                    </ul>
-                </div>
+                       
 
-                <partial name="LoginNav" />
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle  red-btn fw-semibold text-decoration-none " id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                @User.Identity!.Name!
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" asp-action="Logout" asp-controller="UserAuthentication">
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    }
+                    else
+                    {
+                        
+                        <a type="button" class=" red-btn fw-semibold text-decoration-none" asp-controller="UserAuthentication" asp-action="Login">Sign In</a>
+                    }
+                   
+                </div>
             </div>
         </nav>
+
+
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container-fluid ">
+        <main role="main" class="p-4">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container d-flex justify-content-center mt-4">
-            &copy; 2024 - Movie_Catlog_Application - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

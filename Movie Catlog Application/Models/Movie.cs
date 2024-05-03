@@ -12,20 +12,20 @@ namespace Movie_Catlog_Application.Models
         public  string Title { get; set; }
         public string Description { get; set; }
 
-        public DateTime  ReleaseDate { get; set; }
+        public DateOnly?  ReleaseDate { get; set; }
 
-        public int Runtime { get; set; }
+        public int? Runtime { get; set; }
 
         public string? MovieImage { get; set; }
         public string? Cast { get; set; }
 
         public string? Director { get; set; }
 
-        public ICollection<Genre> Genres { get; set; }
+        public ICollection<MovieGenre> MovieGenres { get; set; } = new List<MovieGenre>();
 
-        public ICollection<Rating> Ratings { get; set; }
+        public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
     }
 }

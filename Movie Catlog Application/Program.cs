@@ -28,7 +28,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 builder.Services.AddScoped<IGenericService, GenericService>();
 
-builder.Services.ConfigureApplicationCookie(op => op.LoginPath = ("/Home/Index"));
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Home/Index";
+});
+
+
 
 var app = builder.Build();
 

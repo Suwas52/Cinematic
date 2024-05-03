@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Movie Catlog Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b0d9b5a1e6a6a9f27fa0a2a5189184e13eba008")]
 [assembly: System.Reflection.AssemblyProductAttribute("Movie Catlog Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Movie Catlog Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

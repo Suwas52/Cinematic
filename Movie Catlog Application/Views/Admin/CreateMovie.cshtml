@@ -1,0 +1,64 @@
+﻿@model Movie_Catlog_Application.Models.Movie
+
+@{
+    ViewData["Title"] = "Create Movie";
+    Layout = "_AdminLayout";
+}
+
+<h2>Create Movie</h2>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["msg"]
+    </div>
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["error"]
+    </div>
+}
+<div class="container">
+    <h3 class="fw-bold fs-4 mb-3 text-center">Create Genre</h3>
+
+<form asp-action="CreateMovie" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ReleaseDate" class="control-label">Release Date</label>
+        <input asp-for="ReleaseDate" type="date" class="form-control" />
+        <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Runtime" class="control-label">Runtime</label>
+        <input asp-for="Runtime" class="form-control" />
+        <span asp-validation-for="Runtime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cast" class="control-label">Cast</label>
+        <input asp-for="Cast" class="form-control" />
+        <span asp-validation-for="Cast" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Director" class="control-label">Director</label>
+        <input asp-for="Director" class="form-control" />
+        <span asp-validation-for="Director" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MovieImage" class="control-label">Movie Image</label>
+        <input type="file" asp-for="MovieImage" class="form-control" />
+        <span asp-validation-for="MovieImage" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+</div>

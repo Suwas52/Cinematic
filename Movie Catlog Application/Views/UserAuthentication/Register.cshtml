@@ -5,7 +5,7 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="row d-flex align-items-center justify-content-center">
+@* <div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-4 card p-3">
         <h2 class="text-center text-info">Register</h2>
         <form asp-action="Register" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
@@ -47,6 +47,77 @@
         </form>
     </div>
 </div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+
+<div class="mask d-flex align-items-center h-100">
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-md-8">
+
+                <form asp-action="Register" class="login-form  rounded shadow-5-strong p-5" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+                    <h2 class="mb-4">Register</h2>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                    <div class="form-outline mb-4" data-mdb-input-init>
+                        <input asp-for="Name" type="text" id="Username" class="form-control input-form" placeholder="Name" />
+
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-outline mb-4" data-mdb-input-init>
+                        <input asp-for="Username" type="text" id="Username" class="form-control input-form" placeholder="Username" />
+
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-outline mb-4" data-mdb-input-init>
+                        <input asp-for="Email" type="email" id="Username" class="form-control input-form" placeholder="Email" />
+
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-outline mb-4" data-mdb-input-init>
+                        <input asp-for="Password" type="text" id="Username" class="form-control input-form" placeholder="Password" />
+
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-outline mb-4" data-mdb-input-init>
+                        <input asp-for="ConfirmPassword" type="text" id="Username" class="form-control input-form" placeholder="Confirm Password" />
+
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+
+                    <button type="submit" class="btn form-control" style="background-color:red; color:white; height:50px;" data-mdb-ripple-init>Register</button>
+
+                    <div class="row">
+
+                        <a asp-action="Login" class="text-decoration-none float-start mt-2" asp-route-returnurl="@ViewData["ReturnUrl"]">Already an account?</a>
+                    </div>
+
+
+                    @if (TempData["msg"] != null)
+                    {
+                        <span class="text-danger">
+                            @TempData["msg"]
+                        </span>
+                    }
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

@@ -26,6 +26,7 @@ namespace Movie_Catlog_Application.Interfaces.Implements
 
             if(user == null)
             {
+
                 status.StatusCode = 0;
                 status.Message = "Invalid Username";
                 return status;

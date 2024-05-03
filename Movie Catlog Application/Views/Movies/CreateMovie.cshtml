@@ -1,0 +1,72 @@
+﻿@using Movie_Catlog_Application.Models;
+@model Movie;
+@{
+    ViewData["Title"] = "CreateMovie";
+    Layout = "_AdminLayout";
+}
+
+@if (TempData["msg"] != null)
+{
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["msg"]');
+    </script>
+}
+
+<div class="container">
+    <h3 class="fw-bold fs-4 mb-3 text-center">Create Movie</h3>
+    <form asp-action="MovieCreate" method="post" asp-controller="Movies" class="card p-5" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+        <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label ">Movie Title</label>
+            <input asp-for="Title" type="text" class="form-control" placeholder="Movie Title ">
+            <span asp-validation-for="Title" class="text-danger"></span>
+
+        </div>
+        <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label ">Description</label>
+            <input asp-for="Description" type="text" class="form-control" placeholder="Description">
+            <span asp-validation-for="Description" class="text-danger"></span>
+
+        </div>
+        <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label ">Release Date</label>
+            <input asp-for="ReleaseDate" type="date" class="form-control" >
+            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label ">Total Runtime Movie</label>
+            <input asp-for="Runtime" type="time" class="form-control">
+            <span asp-validation-for="Runtime" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label ">Cast</label>
+            <input asp-for="Cast" type="datetime" class="form-control" placeholder="Cast Names">
+            <span asp-validation-for="Cast" class="text-danger"></span>
+
+        </div>
+        <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label ">Director</label>
+            <input asp-for="Director" type="datetime" class="form-control" placeholder="Director Name">
+            <span asp-validation-for="Director" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label for="exampleInputEmail1" class="form-label ">Movie Image</label>
+            <input asp-for="MovieImage" type="file" name="imageFile" class="form-control" />
+          
+            <span asp-validation-for="MovieImage" class="text-danger"></span>
+        </div>
+
+
+        <div class=" d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary ">Submit</button>
+        </div>
+
+    </form>
+</div>

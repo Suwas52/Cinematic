@@ -5,8 +5,28 @@
       "PackagePath": "staticwebassets\\Movie Catlog Application.bundle.scp.css"
     },
     {
-      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\css\\form.css",
-      "PackagePath": "staticwebassets\\css\\form.css"
+      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\assits\\avengerendofgame.jpg",
+      "PackagePath": "staticwebassets\\assits\\avengerendofgame.jpg"
+    },
+    {
+      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\assits\\damsel.jpeg",
+      "PackagePath": "staticwebassets\\assits\\damsel.jpeg"
+    },
+    {
+      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\assits\\deadpoolwol.jpeg",
+      "PackagePath": "staticwebassets\\assits\\deadpoolwol.jpeg"
+    },
+    {
+      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\assits\\header-img.jpg",
+      "PackagePath": "staticwebassets\\assits\\header-img.jpg"
+    },
+    {
+      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\assits\\road_house.jpg",
+      "PackagePath": "staticwebassets\\assits\\road_house.jpg"
+    },
+    {
+      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
     },
     {
       "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\css\\site.css",
@@ -19,6 +39,10 @@
     {
       "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
     },
     {
       "Id": "D:\\.net and react project\\test\\Movie Catlog Application\\Movie Catlog Application\\wwwroot\\js\\site.js",

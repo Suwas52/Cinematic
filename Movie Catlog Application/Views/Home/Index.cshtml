@@ -2,48 +2,165 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container-fluid">
-    
+
+@{
+    string[] genres = new string[] { "Action", "Comedy", "Drama", "Fantasy" }; 
+}
+
+<div class="">
+
+    <section class="hero container h-75 d-flex flex-column align-items-center justify-content-center">
+        <h1 class="hero-title text-white text-center">Discover Your Favorite Movies</h1>
+        <p class="hero-search-line text-white text-center">Search for movies by title and explore new ones</p>
+
+        <div class="search-input row g-3 d-flex align-items-center justify-content-center w-100 w-lg-75">
+            <div class="form-floating col-auto">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Search Movie">
+                <label for="floatingInput">Movie Name</label>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="get-started-btn red-btn fw-bold">Search</button>
+            </div>
+        </div>
+        <div class="row d-flex align-content-center justify-content-center w-100 mt-2 dropdown-col">
+            <div class="col-md-2 ">
+                <label class="col-form-label ">Genre:</label>
+                <div class="dropdown ">
+                    <button class="btn dropdown-btn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        All
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach (var genre in genres)
+                        {
+                            <li><a class="dropdown-item" href="#" data-genre="@genre">@genre</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <label class="col-form-label ">Rating:</label>
+                <div class="dropdown">
+                    <button class="btn  dropdown-btn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select Genre
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach (var genre in genres)
+                        {
+                            <li><a class="dropdown-item" href="#" data-genre="@genre">@genre</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <label class="col-form-label ">Year:</label>
+                <div class="dropdown">
+                    <button class="btn dropdown-btn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select Year
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach (var genre in genres)
+                        {
+                            <li><a class="dropdown-item" href="#" data-genre="@genre">@genre</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <label class="col-form-label ">Language:</label>
+                <div class="dropdown">
+                    <button class="btn dropdown-btn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        All
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach (var genre in genres)
+                        {
+                            <li><a class="dropdown-item" href="#" data-genre="@genre">@genre</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <label class="col-form-label ">Order By:</label>
+                <div class="dropdown">
+                    <button class="btn dropdown-btn dropdown-toggle text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        All
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach (var genre in genres)
+                        {
+                            <li><a class="dropdown-item" href="#" data-genre="@genre">@genre</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
     <div class="row mt-5">
-        <div class="col-md-3">
+        
+    </div>
+
+    
+    <div class="row mt-3 p-3" style="background-color:transparent; border:2px solid gray">
+
+        
+        
+        <div class="col-md-3 mt-2">
             <div class="card">
-                <img src="https://via.placeholder.com/200" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Movie Title</h5>
-                    <p class="card-text">A brief description of the movie.</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
-                </div>
+                <img src="~/assits/header-img.jpg" class="card-img-top" alt="..." style="height: 300px;">
+                
             </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="col-md-3 mt-2">
             <div class="card">
-                <img src="https://via.placeholder.com/200" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Movie Title</h5>
-                    <p class="card-text">A brief description of the movie.</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
-                </div>
+                <img src="~/assits/avengerendofgame.jpg" class="card-img-top" alt="..." style="height: 300px;">
+
             </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="col-md-3 mt-2">
             <div class="card">
-                <img src="https://via.placeholder.com/200" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Movie Title</h5>
-                    <p class="card-text">A brief description of the movie.</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
-                </div>
+                <img src="~/assits/road_house.jpg" class="card-img-top" alt="..." style="height: 300px;">
+
             </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="col-md-3 mt-2">
             <div class="card">
-                <img src="https://via.placeholder.com/200" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Movie Title</h5>
-                    <p class="card-text">A brief description of the movie.</p>
-                    <a href="#" class="btn btn-primary">More Info</a>
-                </div>
+                <img src="~/assits/avengerendofgame.jpg" class="card-img-top" alt="..." style="height: 300px;">
+
             </div>
         </div>
+
+        <div class="col-md-3 mt-2">
+            <div class="card">
+                <img src="~/assits/damsel.jpeg" class="card-img-top" alt="..." style="height: 300px;">
+
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-2">
+            <div class="card">
+                <img src="~/assits/deadpoolwol.jpeg" class="card-img-top" alt="..." style="height: 300px;">
+
+            </div>
+        </div>
+
+         <div class="col-md-3 mt-2">
+            <div class="card">
+                <img src="~/assits/avengerendofgame.jpg" class="card-img-top" alt="..." style="height: 300px;">
+                
+            </div>
+        </div>
+        <div class="col-md-3 mt-2">
+            <div class="card">
+                <img src="~/assits/avengerendofgame.jpg" class="card-img-top" alt="..." style="height: 300px;">
+
+            </div>
+        </div>
+
+       
     </div>
  </div>

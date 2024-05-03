@@ -1,0 +1,58 @@
+﻿@using Movie_Catlog_Application.Models;﻿
+@model List<Genre>
+
+@{
+    int sn = 1;
+    ViewData["Title"] = "AllGenres";
+    Layout = "_AdminLayout";
+}
+
+@if (TempData["msg"] != null)
+{
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["msg"]');
+    </script>
+}
+
+
+<div class="container-fluid card">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="highlight">
+                        <th scope="col">S.N</th>
+                        <th scope="col">Genre Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <br />
+                <tbody>
+                    @if (Model != null && Model.Any()) 
+                    {
+                        @foreach (var genre in Model)
+                        {
+                            <tr>
+                                <td>@(sn++)</td>
+                                <td>@genre.Name</td>
+                                <td>
+                                    <a asp-action="EditGenre" asp-controller="Admin" asp-route-id="@(genre.GenreId)" class="btn btn-info">Edit</a>
+                                    <a asp-action="Delete" asp-controller="Admin" asp-route-id="@(genre.GenreId)" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3">No genres found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

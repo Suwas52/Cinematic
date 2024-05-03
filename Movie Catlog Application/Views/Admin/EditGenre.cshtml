@@ -1,20 +1,15 @@
-﻿@* @model Movie_Catlog_Application.Models.Genre
+﻿@using Movie_Catlog_Application.Models;
+@model Genre;
+
 @{
-    ViewData["Title"] = "CreateGenre";
+    ViewData["Title"] = "Edit Genre";
     Layout = "_AdminLayout";
 }
 
-@if (TempData["msg"] != null)
-{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script type="text/javascript">
-        toastr.success('@TempData["msg"]');
-    </script>
-}
-
 <div class="container">
-    <h3 class="fw-bold fs-4 mb-3 text-center">Create Genre</h3>
-    <form asp-action="CreateGenre" asp-controller="Genre" method="post" class="card p-5">
+    <h3 class="fw-bold fs-4 mb-3 text-center">Edit Genre</h3>
+    <form asp-action="EditGenre" asp-controller="Admin" method="post" class="card p-5">
+        <input type="hidden" asp-for="GenreId" />
         <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
 
         <div class="mb-4">
@@ -32,4 +27,3 @@
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 }
- *@

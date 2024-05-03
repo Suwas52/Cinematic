@@ -1,4 +1,5 @@
-﻿@* @model Movie_Catlog_Application.Models.Genre
+﻿@using Movie_Catlog_Application.Models;
+@model Genre;
 @{
     ViewData["Title"] = "CreateGenre";
     Layout = "_AdminLayout";
@@ -6,6 +7,7 @@
 
 @if (TempData["msg"] != null)
 {
+    <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">
         toastr.success('@TempData["msg"]');
@@ -14,22 +16,19 @@
 
 <div class="container">
     <h3 class="fw-bold fs-4 mb-3 text-center">Create Genre</h3>
-    <form asp-action="CreateGenre" asp-controller="Genre" method="post" class="card p-5">
+    <form asp-action="CreateGenre" method="post" asp-controller="Genre"  class="card p-5">
         <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
-
+        
         <div class="mb-4">
-            <label asp-for="Name" class="form-label">Genre Name</label>
-            <input asp-for="Name" class="form-control" placeholder="Write Genre Name">
+            <label for="exampleInputEmail1" class="form-label ">Genre Name</label>
+            <input asp-for="Name" type="text" class="form-control" placeholder="Write Genre Name">
             <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
 
-        <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+        
+        <div class=" d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary ">Submit</button>
+        </div>
+        
     </form>
 </div>
-
-@section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-}
- *@
